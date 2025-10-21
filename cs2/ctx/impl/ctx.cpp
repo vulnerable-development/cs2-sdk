@@ -28,6 +28,4 @@ void c_ctx::init( ) const {
     modules_t modules{};
     while ( wait_for_all_modules( modules ) )
         std::this_thread::sleep_for( std::chrono::milliseconds{ 200u } );
-
-    Beep( 1000, 1000 );
 }
