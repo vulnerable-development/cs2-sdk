@@ -3,7 +3,6 @@
 
 #include "../mem.hpp"
 
-// clang-format off
 namespace sdk {
 	ALWAYS_INLINE void peb_t::for_each_ldr_data_table_entry(
 		const std::function< bool( ldr_data_table_entry_t* const ) >& fn, const e_ldr_data_table type
@@ -24,6 +23,5 @@ namespace sdk {
 		return reinterpret_cast< peb_t* >( __readgsqword( 0x60u ) );
 	}
 }
-// clang-format on
 
 #endif

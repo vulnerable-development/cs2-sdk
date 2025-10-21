@@ -3,7 +3,6 @@
 
 #include "detail/detail.hpp"
 
-// clang-format off
 #define BYTESEQ( value )                                                                                              \
     [ & ] ( ) {                                                                                                       \
         constexpr auto k_size = sdk::detail::byte_seq_t< sizeof( value ) >::measure( value );                         \
@@ -31,7 +30,6 @@ namespace sdk {
         requires is_char_v< _char_t >
     ALWAYS_INLINE constexpr hash_t hash( const _char_t* const str );
 }
-// clang-format on
 
 #include "impl/util.inl"
 

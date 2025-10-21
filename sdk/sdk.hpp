@@ -3,7 +3,6 @@
 
 #define ALWAYS_INLINE [[clang::always_inline]] inline
 
-// clang-format off
 #define ENUM_UNDERLYING_OPERATOR( enum_t )                                                                         \
     ALWAYS_INLINE constexpr auto operator-( const enum_t value ) {                                                 \
         return static_cast< std::underlying_type_t< enum_t > >( value );                                           \
@@ -54,7 +53,6 @@
                                                                                                                    \
         return static_cast< ret_t >( ~static_cast< underlying_t >( value ) );                                      \
     }                                                                                                              \
-// clang-format on
 
 #include <d3d11.h>
 #include <intrin.h>

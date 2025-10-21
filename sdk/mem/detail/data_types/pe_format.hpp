@@ -1,7 +1,6 @@
 #ifndef CS2_SDK_BASE_PE_FORMAT_HPP
 #define CS2_SDK_BASE_PE_FORMAT_HPP
 
-// clang-format off
 namespace sdk::detail {
 #pragma pack( push, 1 )
     union version_t {
@@ -207,6 +206,5 @@ namespace sdk::detail {
 
 #pragma pack( pop )
 }
-// clang-format on
 
 #endif

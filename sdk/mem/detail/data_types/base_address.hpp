@@ -1,7 +1,6 @@
 #ifndef CS2_SDK_BASE_ADDRESS_HPP
 #define CS2_SDK_BASE_ADDRESS_HPP
 
-// clang-format off
 namespace sdk::detail {
 	template < typename _addr_t >
 		requires std::is_unsigned_v< _addr_t >
@@ -84,6 +83,5 @@ namespace sdk::detail {
 		}
 	};
 }
-// clang-format on
 
 #endif

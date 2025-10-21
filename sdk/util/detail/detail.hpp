@@ -1,7 +1,6 @@
-#ifndef CS2_SDK_DETAIL_HPP
-#define CS2_SDK_DETAIL_HPP
+#ifndef CS2_SDK_UTIL_DETAIL_HPP
+#define CS2_SDK_UTIL_DETAIL_HPP
 
-// clang-format off
 namespace sdk::detail {
 	template < typename _value_t >
 	ALWAYS_INLINE _value_t load_from_reg( _value_t value ) {
@@ -156,6 +155,5 @@ namespace sdk::detail {
 		bytes_t m_bytes{};
 	};
 }
-// clang-format on
 
 #endif

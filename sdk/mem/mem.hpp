@@ -83,7 +83,6 @@ namespace sdk {
 
 #include "detail/detail.hpp"
 
-// clang-format off
 namespace sdk {
 	using address_t = detail::base_address_t< std::uintptr_t >;
 
@@ -311,7 +310,6 @@ namespace sdk {
         address_t                   m_wait_on_addr_hash_table[ 128u ]{};
     };
 }
-// clang-format on
 
 #include "impl/mem.inl"
 

@@ -1,9 +1,6 @@
 #ifndef CS2_SDK_UTIL_INL
 #define CS2_SDK_UTIL_INL
 
-#include "../util.hpp"
-
-// clang-format off
 namespace sdk {
 	ALWAYS_INLINE std::string to_multi_byte( const std::wstring_view wstr ) {
 		if ( wstr.empty( ) )
@@ -65,6 +62,5 @@ namespace sdk {
 		return hash( str, length );
 	}
 }
-// clang-format on
 
 #endif
