@@ -18,4 +18,17 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     -Wpedantic
     -Wshadow
     -Wextra
+    -Wno-gnu-anonymous-struct
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    _ITERATOR_DEBUG_LEVEL=0
+
+    NOMINMAX
+    WIN32_LEAN_AND_MEAN
+    VC_EXTRALEAN
+    _CRT_SECURE_NO_WARNINGS
+    UNICODE
+    _UNICODE
+    _WINDOWS
 )
