@@ -7,14 +7,14 @@ namespace sdk::detail {
     struct array_wrapper_t {
     protected:
         struct is_base_of_t {
-            static constexpr std::false_type test( ... );
+            static constexpr std::false_type is_array_wrapper( ... );
 
             template < std::size_t _other_size, typename _other_derived_t >
-            static constexpr std::true_type test( array_wrapper_t< _value_t, _other_size, _other_derived_t > );
+            static constexpr std::true_type is_array_wrapper( array_wrapper_t< _value_t, _other_size, _other_derived_t > );
         };
 
         template < typename _other_t >
-        using is_base_of = decltype( is_base_of_t::test( std::declval< _other_t >( ) ) );
+        using is_base_of = decltype( is_base_of_t::is_array_wrapper( std::declval< _other_t >( ) ) );
 
         _value_t m_elements[ _size ]{};
     public:
