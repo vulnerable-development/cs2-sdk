@@ -72,5 +72,6 @@
 
 #include "mem/mem.hpp"
 #include "util/util.hpp"
+#include "math/math.hpp"
 
 #endif
