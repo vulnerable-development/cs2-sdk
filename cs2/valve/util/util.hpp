@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_UTIL_HPP
-#define CS2_SDK_UTIL_HPP
+#pragma once
 
 namespace valve {
     struct utl_mem_t {
@@ -60,5 +59,3 @@ namespace valve {
 }
 
 #include "impl/util.inl"
-
-#endif

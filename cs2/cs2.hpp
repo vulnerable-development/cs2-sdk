@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_CS2_HPP
-#define CS2_SDK_CS2_HPP
+#pragma once
 
 #include <sdk.hpp>
 
@@ -38,5 +37,3 @@
 
 #include "hacks/hacks.hpp"
 #include "hooks/hooks.hpp"
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_INTERFACES_HPP
-#define CS2_SDK_INTERFACES_HPP
+#pragma once
 
 namespace valve {
     class c_engine {
@@ -49,5 +48,3 @@ namespace valve {
 }
 
 #include "impl/interfaces.inl"
-
-#endif

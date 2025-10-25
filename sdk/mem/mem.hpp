@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MEM_HPP
-#define CS2_SDK_MEM_HPP
+#pragma once
 
 namespace sdk {
 	inline constexpr auto k_dos_hdr_magic = 0x5a4du;
@@ -312,5 +311,3 @@ namespace sdk {
 }
 
 #include "impl/mem.inl"
-
-#endif

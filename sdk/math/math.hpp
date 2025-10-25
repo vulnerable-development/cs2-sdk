@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MATH_HPP
-#define CS2_SDK_MATH_HPP
+#pragma once
 
 namespace sdk {
     template < typename _ret_t >
@@ -48,5 +47,3 @@ namespace sdk {
 
     using ahsv_t = detail::base_ahsv_t<>;
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_CTX_HPP
-#define CS2_SDK_CTX_HPP
+#pragma once
 
 namespace valve {
     struct cvar_t;
@@ -64,5 +63,3 @@ public:
 inline const auto g_ctx = std::make_unique< c_ctx >( );
 
 #include "impl/ctx.inl"
-
-#endif

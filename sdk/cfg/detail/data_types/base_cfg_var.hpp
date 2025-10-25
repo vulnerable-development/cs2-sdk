@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_CFG_VAR_HPP
-#define CS2_SDK_BASE_CFG_VAR_HPP
+#pragma once
 
 namespace sdk::detail {
     struct base_cfg_var_t {
@@ -18,5 +17,3 @@ namespace sdk::detail {
         ALWAYS_INLINE hash_t hash( ) const { return m_hash; }
     };
 }
-
-#endif

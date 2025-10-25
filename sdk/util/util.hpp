@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_UTIL_HPP_
-#define CS2_SDK_UTIL_HPP_
+#pragma once
 
 #include "detail/detail.hpp"
 
@@ -32,5 +31,3 @@ namespace sdk {
 }
 
 #include "impl/util.inl"
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MATH_DETAIL_HPP
-#define CS2_SDK_MATH_DETAIL_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t >
@@ -13,5 +12,3 @@ namespace sdk::detail {
 #include "data_types/base_mat.hpp"
 #include "data_types/base_rect.hpp"
 #include "data_types/base_clr.hpp"
-
-#endif

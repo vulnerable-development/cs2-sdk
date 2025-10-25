@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_ADDRESS_HPP
-#define CS2_SDK_BASE_ADDRESS_HPP
+#pragma once
 
 namespace sdk::detail {
 	template < typename _addr_t >
@@ -83,5 +82,3 @@ namespace sdk::detail {
 		}
 	};
 }
-
-#endif

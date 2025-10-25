@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_ARRAY_WRAPPER_HPP
-#define CS2_SDK_ARRAY_WRAPPER_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t, std::size_t _size, typename _derived_t >
@@ -100,5 +99,3 @@ namespace sdk::detail {
         ALWAYS_INLINE constexpr std::size_t size( ) const { return _size; }
     };
 }
-
-#endif

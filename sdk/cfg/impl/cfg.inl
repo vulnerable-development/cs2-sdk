@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_CFG_INL
-#define CS2_SDK_CFG_INL
+#pragma once
 
 #include "../cfg.hpp"
 
@@ -52,5 +51,3 @@ namespace sdk {
         return nullptr;
     }
 }
-
-#endif

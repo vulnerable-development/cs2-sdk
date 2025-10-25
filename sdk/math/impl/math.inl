@@ -32,5 +32,3 @@ namespace sdk {
         return std::remainder( angle, static_cast< _value_t >( 360.0 ) );
     }
 }
-
-#endif

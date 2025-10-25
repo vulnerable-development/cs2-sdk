@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_MAT_HPP
-#define CS2_SDK_BASE_MAT_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t, std::size_t _rows_count, std::size_t _columns_count, typename _derived_t >
@@ -205,5 +204,3 @@ namespace sdk::detail {
         }
     };
 }
-
-#endif

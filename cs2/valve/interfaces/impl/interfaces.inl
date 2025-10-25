@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_INTERFACES_INL
-#define CS2_SDK_INTERFACES_INL
+#pragma once
 
 namespace valve {
     ALWAYS_INLINE cvar_t* c_cvar::find_var( const sdk::hash_t name ) {
@@ -35,5 +34,3 @@ namespace valve {
         return ret;
     }
 }
-
-#endif

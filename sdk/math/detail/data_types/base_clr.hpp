@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_CLR_HPP
-#define CS2_SDK_BASE_CLR_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t, std::size_t _hue_limit, std::size_t _limit >
@@ -178,5 +177,3 @@ namespace sdk::detail {
         }
     };
 }
-
-#endif

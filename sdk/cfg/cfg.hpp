@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_CFG_HPP
-#define CS2_SDK_CFG_HPP
+#pragma once
 
 #include "detail/detail.hpp"
 
@@ -41,5 +40,3 @@ namespace sdk {
 }
 
 #include "impl/cfg.inl"
-
-#endif

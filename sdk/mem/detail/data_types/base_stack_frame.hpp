@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_STACK_FRAME_HPP
-#define CS2_SDK_BASE_STACK_FRAME_HPP
+#pragma once
 
 namespace sdk::detail {
 	template < typename _addr_t >
@@ -23,5 +22,3 @@ namespace sdk::detail {
 		ALWAYS_INLINE base_stack_frame_t< _addr_t > next( ) const { return base_t::deref( 1u ); }
 	};
 }
-
-#endif

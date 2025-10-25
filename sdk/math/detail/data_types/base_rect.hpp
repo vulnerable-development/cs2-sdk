@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_RECT_HPP
-#define CS2_SDK_BASE_RECT_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t >
@@ -34,5 +33,3 @@ namespace sdk::detail {
         ALWAYS_INLINE constexpr corner_t opp_maxs( ) const { return { m_mins.x( ), m_maxs.y( ) }; }
     };
 }
-
-#endif

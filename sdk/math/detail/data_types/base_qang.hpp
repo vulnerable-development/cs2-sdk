@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_QANG_HPP
-#define CS2_SDK_BASE_QANG_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename, std::size_t _size >
@@ -104,5 +103,3 @@ namespace sdk::detail {
         }
     };
 }
-
-#endif

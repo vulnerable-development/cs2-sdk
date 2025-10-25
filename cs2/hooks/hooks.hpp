@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_HOOKS_HPP
-#define CS2_SDK_HOOKS_HPP
+#pragma once
 
 namespace hooks {
 #pragma region ui
@@ -27,5 +26,3 @@ namespace hooks {
     inline decltype( &create_move ) o_create_move{};
 #pragma endregion
 }
-
-#endif

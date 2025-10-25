@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_VEC_HPP
-#define CS2_SDK_BASE_VEC_HPP
+#pragma once
 
 namespace sdk::detail {
     template < typename _value_t, std::size_t _size, typename _derived_t >
@@ -240,5 +239,3 @@ namespace sdk::detail {
         ALWAYS_INLINE constexpr _value_t w( ) const { return base_t::at( 3u ); }
     };
 }
-
-#endif

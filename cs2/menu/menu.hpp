@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MENU_HPP
-#define CS2_SDK_MENU_HPP
+#pragma once
 
 class c_menu {
 private:
@@ -19,5 +18,3 @@ public:
 inline const auto g_menu = std::make_unique< c_menu >( );
 
 #include "impl/menu.inl"
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_RENDER_HPP
-#define CS2_SDK_RENDER_HPP
+#pragma once
 
 class c_render {
 private:
@@ -23,5 +22,3 @@ public:
 inline const auto g_render = std::make_unique< c_render >( );
 
 #include "impl/render.inl"
-
-#endif

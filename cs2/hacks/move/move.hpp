@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MOVE_HPP
-#define CS2_SDK_MOVE_HPP
+#pragma once
 
 namespace hacks {
     class c_move {
@@ -9,5 +8,3 @@ namespace hacks {
 
     inline const auto g_move = std::make_unique< c_move >( );
 }
-
-#endif

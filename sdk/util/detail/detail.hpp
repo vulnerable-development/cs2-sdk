@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_UTIL_DETAIL_HPP
-#define CS2_SDK_UTIL_DETAIL_HPP
+#pragma once
 
 namespace sdk::detail {
 	template < typename _value_t >
@@ -155,5 +154,3 @@ namespace sdk::detail {
 		bytes_t m_bytes{};
 	};
 }
-
-#endif

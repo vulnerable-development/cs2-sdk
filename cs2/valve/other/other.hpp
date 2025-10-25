@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_OTHER_HPP
-#define CS2_SDK_OTHER_HPP
+#pragma once
 
 namespace valve {
     inline constexpr auto k_mp_backup = 150u;
@@ -156,5 +155,3 @@ namespace valve {
 }
 
 #include "impl/other.inl"
-
-#endif

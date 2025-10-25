@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_ENTITIES_HPP
-#define CS2_SDK_ENTITIES_HPP
+#pragma once
 
 namespace valve {
     struct base_entity_t {
@@ -23,5 +22,3 @@ namespace valve {
 
     struct cs_player_pawn_t : public cs_player_pawn_base_t {};
 }
-
-#endif

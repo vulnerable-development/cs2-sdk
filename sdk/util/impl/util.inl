@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_UTIL_INL_
-#define CS2_SDK_UTIL_INL_
+#pragma once
 
 namespace sdk {
 	ALWAYS_INLINE std::string to_multi_byte( const std::wstring_view wstr ) {
@@ -62,5 +61,3 @@ namespace sdk {
 		return hash( str, length );
 	}
 }
-
-#endif

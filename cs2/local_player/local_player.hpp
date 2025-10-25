@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_LOCAL_PLAYER_HPP
-#define CS2_SDK_LOCAL_PLAYER_HPP
+#pragma once
 
 class c_local_player {
 private:
@@ -16,5 +15,3 @@ public:
 inline const auto g_local_player = std::make_unique< c_local_player >( );
 
 #include "impl/local_player.inl"
-
-#endif

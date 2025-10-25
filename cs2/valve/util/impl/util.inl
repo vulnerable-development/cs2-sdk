@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_UTIL_INL
-#define CS2_SDK_UTIL_INL
+#pragma once
 
 #include "../util.hpp"
 
@@ -42,5 +41,3 @@ namespace valve {
     template < typename _value_t >
     ALWAYS_INLINE int utl_vec_t< _value_t >::size( ) const { return m_size; }
 }
-
-#endif

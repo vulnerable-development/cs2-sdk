@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_OTHER_INL
-#define CS2_SDK_OTHER_INL
+#pragma once
 
 #include "../other.hpp"
 
@@ -12,5 +11,3 @@ namespace valve {
         return &m_cmds[ sequence_number % k_mp_backup ];
     }
 }
-
-#endif

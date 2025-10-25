@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_SDK_HPP
-#define CS2_SDK_SDK_HPP
+#pragma once
 
 #define ALWAYS_INLINE [[clang::always_inline]] inline
 #define RELEASE_D3D( ptr ) ptr->Release( ); ptr = nullptr
@@ -87,5 +86,3 @@
 #include "math/math.hpp"
 
 #include "cfg/cfg.hpp"
-
-#endif

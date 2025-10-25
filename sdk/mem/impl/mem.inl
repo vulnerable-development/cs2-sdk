@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_MEM_INL
-#define CS2_SDK_MEM_INL
+#pragma once
 
 #include "../mem.hpp"
 
@@ -23,5 +22,3 @@ namespace sdk {
 		return reinterpret_cast< peb_t* >( __readgsqword( 0x60u ) );
 	}
 }
-
-#endif

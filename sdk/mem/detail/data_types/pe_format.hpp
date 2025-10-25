@@ -1,5 +1,4 @@
-#ifndef CS2_SDK_BASE_PE_FORMAT_HPP
-#define CS2_SDK_BASE_PE_FORMAT_HPP
+#pragma once
 
 namespace sdk::detail {
 #pragma pack( push, 1 )
@@ -206,5 +205,3 @@ namespace sdk::detail {
 
 #pragma pack( pop )
 }
-
-#endif
