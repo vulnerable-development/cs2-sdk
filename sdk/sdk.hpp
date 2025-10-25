@@ -78,6 +78,10 @@
 #include <backends/imgui_impl_dx11.h>
 #include <backends/imgui_impl_win32.h>
 
+#include <usercmd.pb.h>
+#include <cs_usercmd.pb.h>
+#include <networkbasetypes.pb.h>
+
 #include "mem/mem.hpp"
 #include "util/util.hpp"
 #include "math/math.hpp"
