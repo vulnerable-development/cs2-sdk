@@ -5,8 +5,12 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_subdirectory(third_party)
+
 add_library(${PROJECT_NAME} SHARED
     cs2/ctx/impl/ctx.cpp
+
+    sdk/cfg/impl/cfg.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -22,7 +26,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
-    _ITERATOR_DEBUG_LEVEL=0
+    SDK_CFG_ID_OBJECT=\"${PROJECT_NAME}\"
 
     NOMINMAX
     WIN32_LEAN_AND_MEAN
@@ -31,4 +35,10 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
     UNICODE
     _UNICODE
     _WINDOWS
+
+    _ITERATOR_DEBUG_LEVEL=0
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    nlohmann_json::nlohmann_json
 )

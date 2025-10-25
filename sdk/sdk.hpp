@@ -70,8 +70,12 @@
 #include <type_traits>
 #include <vector>
 
+#include <nlohmann/json.hpp>
+
 #include "mem/mem.hpp"
 #include "util/util.hpp"
 #include "math/math.hpp"
+
+#include "cfg/cfg.hpp"
 
 #endif
