@@ -63,7 +63,7 @@ foreach(FILE ${PROTOBUF_FILES})
 
     add_custom_command(
         OUTPUT ${GEN_SRC} ${GEN_HDR}
-        COMMAND $<TARGET_FILE:protobuf::protoc> --cpp_out=lite:${PROTOBUF_OUTDIR} --proto_path=${PROTOBUF_DIR} --proto_path=${protobuf_SOURCE_DIR}/src ${FILE}
+        COMMAND $<TARGET_FILE:protobuf::protoc> --cpp_out=:${PROTOBUF_OUTDIR} --proto_path=${PROTOBUF_DIR} --proto_path=${protobuf_SOURCE_DIR}/src ${FILE}
         DEPENDS ${FILE}
     )
 
@@ -75,5 +75,5 @@ add_custom_target(protobuf_generate ALL DEPENDS ${GENERATED_PB_FILES})
 add_library(protobuf STATIC ${GENERATED_PB_FILES})
 add_dependencies(protobuf protobuf_generate)
 
-target_link_libraries(protobuf PUBLIC protobuf::libprotobuf-lite)
+target_link_libraries(protobuf PUBLIC protobuf::libprotobuf)
 target_include_directories(protobuf PUBLIC ${PROTOBUF_OUTDIR} ${PROTOBUF_DIR})

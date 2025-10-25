@@ -21,6 +21,11 @@ namespace hooks {
     void __fastcall is_relative_mouse_mode( valve::input_system_t* const rcx, const bool active );
     inline decltype( &is_relative_mouse_mode ) o_is_relative_mouse_mode{};
 #pragma endregion
+
+#pragma region input
+    void __fastcall create_move( valve::input_t* const rcx, const int slot, const bool active );
+    inline decltype( &create_move ) o_create_move{};
+#pragma endregion
 }
 
 #endif

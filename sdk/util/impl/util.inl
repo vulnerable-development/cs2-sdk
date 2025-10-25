@@ -1,5 +1,5 @@
-#ifndef CS2_SDK_UTIL_INL
-#define CS2_SDK_UTIL_INL
+#ifndef CS2_SDK_UTIL_INL_
+#define CS2_SDK_UTIL_INL_
 
 namespace sdk {
 	ALWAYS_INLINE std::string to_multi_byte( const std::wstring_view wstr ) {

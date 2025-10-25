@@ -10,7 +10,12 @@ add_subdirectory(third_party)
 add_library(${PROJECT_NAME} SHARED
     cs2/ctx/impl/ctx.cpp
 
+    cs2/hacks/move/impl/move.cpp
+
     cs2/hooks/impl/ui.cpp
+    cs2/hooks/impl/input.cpp
+
+    cs2/local_player/impl/local_player.cpp
 
     cs2/menu/impl/menu.cpp
 

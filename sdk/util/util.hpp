@@ -1,5 +1,5 @@
-#ifndef CS2_SDK_UTIL_HPP
-#define CS2_SDK_UTIL_HPP
+#ifndef CS2_SDK_UTIL_HPP_
+#define CS2_SDK_UTIL_HPP_
 
 #include "detail/detail.hpp"
 

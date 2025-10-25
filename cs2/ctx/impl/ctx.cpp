@@ -109,7 +109,10 @@ void c_ctx::init_interfaces( const modules_t& modules ) const {
     const code_section_t client{ modules.at( HASH( "client.dll" ) ) };
 
     constexpr sdk::hash_t k_needed_modules[ ] = {
-        HASH( "inputsystem.dll" )
+        HASH( "engine2.dll" ),
+        HASH( "schemasystem.dll" ),
+        HASH( "inputsystem.dll" ),
+        HASH( "tier0.dll" )
     };
 
     interfaces_t interfaces{};
@@ -119,19 +122,116 @@ void c_ctx::init_interfaces( const modules_t& modules ) const {
     if ( interfaces.empty( ) )
         THROW_IF_DBG( "can't find interfaces." );
 
+    valve::g_engine = interfaces.at( HASH( "Source2EngineToClient001" ) ).as< valve::c_engine* >( );
+
+    valve::g_entity_list = *BYTESEQ( "48 89 35 ? ? ? ? 48 85 F6" ).search(
+        client.m_start, client.m_end
+    ).self_rel( ).as< valve::c_entity_list** >( );
+
+    valve::g_schema_system = interfaces.at( HASH( "SchemaSystem_001" ) ).as< valve::c_schema_system* >( );
+
     valve::g_input_system = interfaces.at( HASH( "InputSystemVersion001" ) ).as< valve::input_system_t* >( );
     valve::g_input = *BYTESEQ( "48 8B 0D ? ? ? ? 4C 8B C6 8B 10 E8" ).search(
         client.m_start, client.m_end
     ).self_rel( ).as< valve::input_t** >( );
+
+    valve::g_cvar = interfaces.at( HASH( "VEngineCvar007" ) ).as< valve::c_cvar* >( );
+}
+
+bool c_ctx::parse_ent_offsets( ent_offsets_t& offsets ) const {
+    constexpr const char* k_needed_modules[ ] = {
+        "client.dll",
+        "engine2.dll",
+        "schemasystem.dll"
+    };
+
+    offsets.reserve( 41000u );
+
+    std::string concated{};
+
+    concated.reserve( 128u );
+
+    for ( const auto modules : k_needed_modules ) {
+        const auto type_scope = valve::g_schema_system->find_type_scope( modules );
+        if ( !type_scope )
+            continue;
+
+        const auto elements_count = type_scope->m_bindings.count( );
+        const auto new_elements = std::make_unique_for_overwrite< std::uintptr_t[ ] >( elements_count );
+        const auto elements = type_scope->m_bindings.elements( elements_count, new_elements.get( ) );
+
+        for ( int i{}; i < elements; ++i ) {
+            const auto element = new_elements[ i ];
+
+            const auto binding = type_scope->m_bindings[ element ];
+            if ( !binding )
+                continue;
+
+            valve::schema_info_data_t* class_info{};
+            type_scope->find( &class_info, binding->m_name );
+
+            if ( !class_info
+                 || class_info->m_fields_count <= 0 )
+                continue;
+
+            for ( std::uint8_t j{}; j < class_info->m_fields_count; ++j ) {
+                const auto& field = class_info->m_fields[ j ];
+                if ( !field.m_name )
+                    continue;
+
+                concated.assign( binding->m_name );
+                concated.append( "->" );
+                concated.append( field.m_name );
+
+                offsets.insert_or_assign(
+                    sdk::hash( concated.data( ), concated.size( ) ),
+                    ent_offset_t{ field.m_offset }
+                );
+            }
+        }
+    }
+
+    return !offsets.empty( );
+}
+
+void c_ctx::init_offsets( const modules_t& modules ) {
+    const code_section_t client{ modules.at( HASH( "client.dll" ) ) };
+
+    m_offsets.m_split_screen_view_controller = BYTESEQ( "48 83 EC ? 83 F9 ? 75 ? 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 90 ? ? ? ? 8B 08 48 63 C1 48 8D 0D ? ? ? ? 48 8B 04 C1 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ? 83 F9" ).search(
+        client.m_start, client.m_end
+    );
+
+    m_offsets.m_split_screen_view_pawn = BYTESEQ( "48 83 EC ? 83 F9 ? 75 ? 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 90 ? ? ? ? 8B 08 48 63 C1 4C 8D 05" ).search(
+        client.m_start, client.m_end
+    );
+
+    ent_offsets_t offsets{};
+    if ( !parse_ent_offsets( offsets ) )
+        THROW_IF_DBG( "can't find ent offsets." );
+
+    m_offsets.m_base_entity.m_flags = offsets.at( HASH( "C_BaseEntity->m_fFlags" ) ).m_offset;
+    m_offsets.m_base_entity.m_move_type = offsets.at( HASH( "C_BaseEntity->m_nActualMoveType" ) ).m_offset;
+
+    m_offsets.m_base_player_controller.m_user_cmd_manager = BYTESEQ( "41 56 41 57 48 83 EC ? 48 8D 54 24" ).search(
+        client.m_start, client.m_end
+    );
+
+    m_offsets.m_cs_player_controller.m_pawn_alive = offsets.at( HASH( "CCSPlayerController->m_bPawnIsAlive" ) ).m_offset;
+}
+
+void c_ctx::init_cvars( ) {
+    m_cvars.sv_autobunnyhopping = valve::g_cvar->find_var( HASH( "sv_autobunnyhopping" ) );
 }
 
 void c_ctx::init_hooks( const modules_t& modules ) const {
     HOOK_VFUNC( valve::g_input_system, 76u, hooks::is_relative_mouse_mode, hooks::o_is_relative_mouse_mode );
 
     HOOK_VFUNC( valve::g_input, 19u, hooks::mouse_input_enabled, hooks::o_mouse_input_enabled );
+
+    HOOK_VFUNC( valve::g_input, 5u, hooks::create_move, hooks::o_create_move );
 }
 
-void c_ctx::init( ) const {
+void c_ctx::init( ) {
     modules_t modules{};
     while ( wait_for_all_modules( modules ) )
         std::this_thread::sleep_for( std::chrono::milliseconds{ 200u } );
@@ -142,6 +242,10 @@ void c_ctx::init( ) const {
     init_imgui( modules );
 
     init_interfaces( modules );
+
+    init_offsets( modules );
+
+    init_cvars( );
 
     init_hooks( modules );
 

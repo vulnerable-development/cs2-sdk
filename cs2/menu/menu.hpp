@@ -4,10 +4,14 @@
 class c_menu {
 private:
     struct {
+        struct {
+            sdk::cfg_var_t< bool > m_bhop{ HASH( "move.bhop" ), false };
+        } m_move{};
+
         bool m_hidden{}, m_active{};
     } m_main{};
 public:
-    void run( ) const;
+    void run( );
 
     ALWAYS_INLINE auto& main( );
 };

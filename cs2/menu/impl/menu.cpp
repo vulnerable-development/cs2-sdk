@@ -1,10 +1,14 @@
 #include "../../cs2.hpp"
 
-void c_menu::run( ) const {
+void c_menu::run( ) {
     if ( m_main.m_hidden )
         return;
 
     ImGui::Begin( "cs2 sdk" );
+
+    if ( ImGui::CollapsingHeader( "move" ) ) {
+        ImGui::Checkbox( "bhop", &m_main.m_move.m_bhop );
+    }
 
     if ( ImGui::CollapsingHeader( "cfg" ) ) {
         if ( ImGui::Button( "load" ) )
