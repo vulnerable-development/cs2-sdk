@@ -10,6 +10,12 @@ add_subdirectory(third_party)
 add_library(${PROJECT_NAME} SHARED
     cs2/ctx/impl/ctx.cpp
 
+    cs2/hooks/impl/ui.cpp
+
+    cs2/menu/impl/menu.cpp
+
+    cs2/render/impl/render.cpp
+
     sdk/cfg/impl/cfg.cpp
 )
 
@@ -23,6 +29,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     -Wshadow
     -Wextra
     -Wno-gnu-anonymous-struct
+    -Wno-language-extension-token
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
@@ -41,4 +48,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     nlohmann_json::nlohmann_json
+    minhook
+    imgui
 )

@@ -4,5 +4,12 @@
 #include <sdk.hpp>
 
 #include "ctx/ctx.hpp"
+#include "menu/menu.hpp"
+
+#include "render/render.hpp"
+
+#include "valve/valve.hpp"
+
+#include "hooks/hooks.hpp"
 
 #endif

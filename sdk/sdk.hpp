@@ -2,6 +2,7 @@
 #define CS2_SDK_SDK_HPP
 
 #define ALWAYS_INLINE [[clang::always_inline]] inline
+#define RELEASE_D3D( ptr ) ptr->Release( ); ptr = nullptr
 
 #define ENUM_UNDERLYING_OPERATOR( enum_t )                                                                         \
     ALWAYS_INLINE constexpr auto operator-( const enum_t value ) {                                                 \
@@ -71,6 +72,11 @@
 #include <vector>
 
 #include <nlohmann/json.hpp>
+#include <MinHook.h>
+
+#include <imgui.h>
+#include <backends/imgui_impl_dx11.h>
+#include <backends/imgui_impl_win32.h>
 
 #include "mem/mem.hpp"
 #include "util/util.hpp"
