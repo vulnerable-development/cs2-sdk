@@ -78,7 +78,7 @@ namespace valve {
 
     struct schema_type_scope_t {
         VFUNC( void( __thiscall* )( decltype( this ), schema_info_data_t**, const char* ),
-            find( schema_info_data_t** ret, const char* name ), 2u, ret, name
+            find_class_info( schema_info_data_t** ret, const char* name ), 2u, ret, name
         );
 
         std::byte                                            pad0[ 1280u ]{};
@@ -148,8 +148,7 @@ namespace valve {
         noclip,
         observer,
         ladder,
-        custom,
-        last
+        custom
     };
 #pragma endregion
 }

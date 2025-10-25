@@ -168,7 +168,7 @@ bool c_ctx::parse_ent_offsets( ent_offsets_t& offsets ) const {
                 continue;
 
             valve::schema_info_data_t* class_info{};
-            type_scope->find( &class_info, binding->m_name );
+            type_scope->find_class_info( &class_info, binding->m_name );
 
             if ( !class_info
                  || class_info->m_fields_count <= 0 )
