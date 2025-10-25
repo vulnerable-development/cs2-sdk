@@ -11,7 +11,7 @@ private:
 
     HWND                    m_hwnd{};
 public:
-    void process_frame( IDXGISwapChain* swap_chain, const bool call_once = true );
+    void process_frame( IDXGISwapChain* const swap_chain, const bool call_once = true );
 
     ALWAYS_INLINE const auto& device( ) const;
 

@@ -14,7 +14,7 @@ void c_render::process( ) const {
     ImGui_ImplDX11_Init( m_device, m_device_ctx );
 }
 
-void c_render::process_frame( IDXGISwapChain* swap_chain, const bool call_once ) {
+void c_render::process_frame( IDXGISwapChain* const swap_chain, const bool call_once ) {
     DXGI_SWAP_CHAIN_DESC desc{};
     swap_chain->GetDesc( &desc );
 
