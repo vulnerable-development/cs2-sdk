@@ -15,7 +15,7 @@ namespace valve {
     }
 
     ALWAYS_INLINE std::uint64_t c_cvar::first( ) {
-        using fn_t = void( __thiscall* )( c_cvar*, std::uint64_t* );
+        using fn_t = void( __thiscall* )( decltype( this ), std::uint64_t* );
 
         std::uint64_t ret{};
 
@@ -25,7 +25,7 @@ namespace valve {
     }
 
     ALWAYS_INLINE std::uint64_t c_cvar::next( const std::uint64_t& value ) {
-        using fn_t = void( __thiscall* )( c_cvar*, std::uint64_t*, std::uint64_t );
+        using fn_t = void( __thiscall* )( decltype( this ), std::uint64_t*, std::uint64_t );
 
         std::uint64_t ret{ value };
 
