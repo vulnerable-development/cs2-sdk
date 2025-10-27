@@ -2,12 +2,12 @@
 
 #include "detail/detail.hpp"
 
-#define BYTESEQ( value )                                                                                              \
-    [ & ] ( ) {                                                                                                       \
-        constexpr auto k_size = sdk::detail::byte_seq_t< sizeof( value ) >::measure( value );                         \
-                                                                                                                      \
-        return sdk::detail::byte_seq_t< k_size >{ [ & ]( ) { return value; }, std::make_index_sequence< k_size >{} }; \
-    } ( )                                                                                                             \
+#define BYTESEQ( value )                                                                                               \
+    [ & ] ( ) {                                                                                                        \
+        constexpr auto k_size = sdk::detail::byte_seq_t< sizeof( value ) >::measure( value );                          \
+                                                                                                                       \
+        return sdk::detail::byte_seq_t< k_size >{ [ & ] ( ) { return value; }, std::make_index_sequence< k_size >{} }; \
+    } ( )                                                                                                              \
 
 #define HASH( str ) [ ] ( ) { constexpr auto k_hash = sdk::hash( str ); return k_hash; } ( )
 
