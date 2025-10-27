@@ -4,7 +4,7 @@ void c_menu::run( ) {
     if ( m_main.m_hidden )
         return;
 
-    ImGui::Begin( "cs2 sdk" );
+    ImGui::Begin( PROJECT_NAME );
 
     if ( ImGui::CollapsingHeader( "move" ) ) {
         ImGui::Checkbox( "bhop", &m_main.m_move.m_bhop );
