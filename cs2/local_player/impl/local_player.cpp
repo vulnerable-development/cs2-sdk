@@ -9,9 +9,7 @@ void c_local_player::on_create_move( ) {
         || !m_local_player_pawn )
         return;
 
-    const auto cmd_manager = m_local_player_controller->user_cmd_manager( );
-
-    const auto cmd = cmd_manager->get_user_cmd( );
+    const auto cmd = m_local_player_controller->user_cmd_manager( )->get_user_cmd( );
     if ( !cmd )
         return;
 
