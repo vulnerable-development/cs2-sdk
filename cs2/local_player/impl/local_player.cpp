@@ -10,11 +10,10 @@ void c_local_player::on_create_move( ) {
         return;
 
     const auto cmd_manager = m_local_player_controller->user_cmd_manager( );
-    if ( !cmd_manager )
-        return;
-
     const auto cmd = cmd_manager->get_user_cmd( );
-    if ( !cmd )
+
+    if ( !cmd_manager
+        || !cmd )
         return;
 
     cmd->pb.mutable_base( )->clear_subtick_moves( );
