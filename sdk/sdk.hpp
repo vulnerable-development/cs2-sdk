@@ -74,6 +74,7 @@
 #include <MinHook.h>
 
 #include <spdlog/spdlog.h>
+#include <spdlog/sinks/wincolor_sink.h>
 
 #include <imgui.h>
 #include <backends/imgui_impl_dx11.h>

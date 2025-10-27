@@ -28,6 +28,8 @@ namespace sdk {
     template < typename _char_t >
         requires is_char_v< _char_t >
     ALWAYS_INLINE constexpr hash_t hash( const _char_t* const str );
+
+    ALWAYS_INLINE void attach_console( );
 }
 
 #include "impl/util.inl"

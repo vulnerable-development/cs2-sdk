@@ -1,5 +1,4 @@
 #pragma once
-#include "../../../output/release/_deps/spdlog-src/include/spdlog/sinks/wincolor_sink.h"
 
 namespace sdk {
 	ALWAYS_INLINE std::string to_multi_byte( const std::wstring_view wstr ) {
