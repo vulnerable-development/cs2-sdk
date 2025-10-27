@@ -70,22 +70,22 @@ namespace sdk {
 
 	    SetConsoleTitle( TEXT( PROJECT_NAME " debug" ) );
 
-	    const auto g_win_clr_sink = std::make_shared< spdlog::sinks::wincolor_stdout_sink_mt >( );
+	    const auto win_clr_sink = std::make_shared< spdlog::sinks::wincolor_stdout_sink_mt >( );
 
 	    {
-	        g_win_clr_sink->set_color( spdlog::level::debug, FOREGROUND_RED | FOREGROUND_GREEN );
-	        g_win_clr_sink->set_color( spdlog::level::trace, FOREGROUND_INTENSITY );
-	        g_win_clr_sink->set_color( spdlog::level::info, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY );
-	        g_win_clr_sink->set_color( spdlog::level::warn, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY );
-	        g_win_clr_sink->set_color( spdlog::level::err, FOREGROUND_RED | FOREGROUND_INTENSITY );
-	        g_win_clr_sink->set_color( spdlog::level::critical, FOREGROUND_RED );
+	        win_clr_sink->set_color( spdlog::level::debug, FOREGROUND_RED | FOREGROUND_GREEN );
+	        win_clr_sink->set_color( spdlog::level::trace, FOREGROUND_INTENSITY );
+	        win_clr_sink->set_color( spdlog::level::info, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY );
+	        win_clr_sink->set_color( spdlog::level::warn, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY );
+	        win_clr_sink->set_color( spdlog::level::err, FOREGROUND_RED | FOREGROUND_INTENSITY );
+	        win_clr_sink->set_color( spdlog::level::critical, FOREGROUND_RED );
 	    }
 
-	    const auto g_logger = std::make_shared< spdlog::logger >( PROJECT_NAME " logger", g_win_clr_sink );
+	    const auto logger = std::make_shared< spdlog::logger >( PROJECT_NAME " logger", win_clr_sink );
 
 	    {
-	        g_logger->set_level( spdlog::level::debug );
-	        g_logger->set_pattern( "%^[%H:%M:%S][%t][%l] %v%$" );
+	        logger->set_level( spdlog::level::debug );
+	        logger->set_pattern( "%^[%H:%M:%S][%t][%l] %v%$" );
 	    }
 	}
 }
