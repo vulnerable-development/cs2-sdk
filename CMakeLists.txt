@@ -38,7 +38,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
-    SDK_CFG_ID_OBJECT=\"${PROJECT_NAME}\"
+    PROJECT_NAME=\"${PROJECT_NAME}\"
 
     NOMINMAX
     WIN32_LEAN_AND_MEAN
@@ -54,6 +54,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
     nlohmann_json::nlohmann_json
     minhook
+    spdlog::spdlog
     imgui
     protobuf
 )

@@ -6,13 +6,16 @@ int __stdcall DllMain( _In_ HINSTANCE instance, _In_ DWORD reason, [[maybe_unuse
 
     DisableThreadLibraryCalls( instance );
 
+#ifdef _DEBUG
+    sdk::attach_console( );
+#endif
     std::jthread{ [ ] ( ) { g_ctx->init( ); } }.detach( );
 
     return 1;
 }
 
 #ifdef _DEBUG
-#define THROW_IF_DBG( exception ) throw std::runtime_error{ exception }
+#define THROW_IF_DBG( exception ) spdlog::error( "{}", exception )
 #else
 #define THROW_IF_DBG( exception ) return
 #endif
@@ -251,6 +254,8 @@ void c_ctx::init( ) {
 
     if ( MH_EnableHook( MH_ALL_HOOKS ) != MH_OK )
         THROW_IF_DBG( "can't enable all hooks." );
+
+    spdlog::info( "successfully initialized." );
 }
 
 #undef HOOK

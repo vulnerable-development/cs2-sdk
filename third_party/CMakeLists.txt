@@ -1,16 +1,23 @@
 include(cpm/cpm.cmake)
 
+add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
+
 CPMAddPackage(
     NAME json
     GITHUB_REPOSITORY nlohmann/json
     GIT_TAG master
-    OPTIONS "JSON_BuildTests OFF"
 )
 
 CPMAddPackage(
     NAME minhook
     GITHUB_REPOSITORY TsudaKageyu/minhook
     GIT_TAG master
+)
+
+CPMAddPackage(
+    NAME spdlog
+    GITHUB_REPOSITORY gabime/spdlog
+    GIT_TAG v1.16.0
 )
 
 CPMAddPackage(
@@ -32,8 +39,6 @@ target_include_directories(imgui PUBLIC
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
 )
-
-add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
 
 CPMAddPackage(
     NAME protobuf

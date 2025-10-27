@@ -2,13 +2,13 @@
 
 namespace sdk {
     void c_cfg::save( const std::string_view name ) const {
-        const auto path = std::filesystem::path{ SDK_CFG_ID_OBJECT } /= name;
+        const auto path = std::filesystem::path{ PROJECT_NAME } /= name;
 
-        std::filesystem::create_directory( SDK_CFG_ID_OBJECT );
+        std::filesystem::create_directory( PROJECT_NAME );
 
         nlohmann::json json{};
 
-        auto& object = json[ SDK_CFG_ID_OBJECT ];
+        auto& object = json[ PROJECT_NAME ];
 
         for ( const auto var : m_vars )
             var->save( object );
@@ -18,9 +18,9 @@ namespace sdk {
     }
 
     void c_cfg::load( const std::string_view name ) {
-        const auto path = std::filesystem::path{ SDK_CFG_ID_OBJECT } /= name;
+        const auto path = std::filesystem::path{ PROJECT_NAME } /= name;
 
-        std::filesystem::create_directory( SDK_CFG_ID_OBJECT );
+        std::filesystem::create_directory( PROJECT_NAME );
 
         std::string str{};
         if ( std::ifstream file{ path, std::ios::in } )
@@ -33,7 +33,7 @@ namespace sdk {
         if ( !json.is_object( ) )
             return;
 
-        const auto object = json.find( SDK_CFG_ID_OBJECT );
+        const auto object = json.find( PROJECT_NAME );
         if ( object == json.end( ) )
             return;
 

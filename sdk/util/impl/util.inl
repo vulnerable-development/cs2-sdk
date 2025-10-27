@@ -1,4 +1,5 @@
 #pragma once
+#include "../../../output/release/_deps/spdlog-src/include/spdlog/sinks/wincolor_sink.h"
 
 namespace sdk {
 	ALWAYS_INLINE std::string to_multi_byte( const std::wstring_view wstr ) {
@@ -59,5 +60,33 @@ namespace sdk {
 			;
 
 		return hash( str, length );
+	}
+
+    ALWAYS_INLINE void attach_console( ) {
+	    AllocConsole( );
+	    AttachConsole( ATTACH_PARENT_PROCESS );
+
+	    std::freopen( "CONOUT$", "w", stdout );
+	    std::cout.setstate( std::ios::failbit );
+
+	    SetConsoleTitle( TEXT( PROJECT_NAME " debug" ) );
+
+	    const auto g_win_clr_sink = std::make_shared< spdlog::sinks::wincolor_stdout_sink_mt >( );
+
+	    {
+	        g_win_clr_sink->set_color( spdlog::level::debug, FOREGROUND_RED | FOREGROUND_GREEN );
+	        g_win_clr_sink->set_color( spdlog::level::trace, FOREGROUND_INTENSITY );
+	        g_win_clr_sink->set_color( spdlog::level::info, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY );
+	        g_win_clr_sink->set_color( spdlog::level::warn, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY );
+	        g_win_clr_sink->set_color( spdlog::level::err, FOREGROUND_RED | FOREGROUND_INTENSITY );
+	        g_win_clr_sink->set_color( spdlog::level::critical, FOREGROUND_RED );
+	    }
+
+	    const auto g_logger = std::make_shared< spdlog::logger >( PROJECT_NAME " logger", g_win_clr_sink );
+
+	    {
+	        g_logger->set_level( spdlog::level::debug );
+	        g_logger->set_pattern( "%^[%H:%M:%S][%t][%l] %v%$" );
+	    }
 	}
 }
