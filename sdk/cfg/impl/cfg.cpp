@@ -20,14 +20,9 @@ namespace sdk {
     void c_cfg::load( const std::string_view name ) {
         const auto path = std::filesystem::path{ PROJECT_NAME } /= name;
 
-        std::filesystem::create_directory( PROJECT_NAME );
-
         std::string str{};
         if ( std::ifstream file{ path, std::ios::in } )
             file >> str;
-
-        if ( str.empty( ) )
-            return;
 
         const auto json = nlohmann::json::parse( str );
         if ( !json.is_object( ) )
